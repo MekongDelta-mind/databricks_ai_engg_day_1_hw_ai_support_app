@@ -1,6 +1,10 @@
 - [x] Your Databricks App URL: https://databricks-day-1-hw-1-7474660520510840.aws.databricksapps.com
 
-- [x] Your source code zipped up
+- [x] Your source code zipped up.
+
+    Github repo link: 
+    
+    https://github.com/MekongDelta-mind/databricks_ai_engg_day_1_hw_ai_support_app
 
 - [x] A screenshot of the deployed application
 

@@ -83,7 +83,7 @@ Deploy the app using Databricks Apps and confirm that:
 
 What to Submit
 
-`NOTE`: The details for all the submission requirements are mentiond in the `submission.md` here.
+`NOTE`: The details for all the submission requirements are mentiond in the [`submission.md`](https://github.com/MekongDelta-mind/databricks_ai_engg_day_1_hw_ai_support_app/blob/main/submission.md) here in this repo.
 
 Submit one document or form response containing:
 
