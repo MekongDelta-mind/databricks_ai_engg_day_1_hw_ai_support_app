@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Support Tickets{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .ticket { border: 1px solid #ccc; padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .message { background: #f9f9f9; padding: 8px; margin: 5px 0; border-radius: 3px; }
+        .status { font-weight: bold; }
+        form { margin: 10px 0; }
+        label { display: inline-block; width: 100px; }
+        input, select, textarea { margin: 5px 0; padding: 5px; }
+        .btn { background: #007bff; color: white; padding: 5px 15px; border: none; border-radius: 3px; cursor: pointer; }
+        .btn:hover { background: #0056b3; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .back { margin-top: 20px; display: inline-block; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>{% block header %}Support Tickets{% endblock %}</h1>
+    {% block content %}{% endblock %}
+</body>
+</html>

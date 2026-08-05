@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Ticket #{{ ticket.ticket_id }}{% endblock %}
+{% block header %}Ticket #{{ ticket.ticket_id }}: {{ ticket.title }}{% endblock %}
+
+{% block content %}
+    <div class="ticket">
+        <p><strong>Status:</strong> <span class="status">{{ ticket.status }}</span></p>
+        <p><strong>Priority:</strong> {{ ticket.priority }}</p>
+        <p><strong>Created by:</strong> {{ ticket.created_by }}</p>
+        <p><strong>Created:</strong> {{ ticket.created_at.strftime('%Y-%m-%d %H:%M') if ticket.created_at else '' }}</p>
+        <p><strong>Last updated:</strong> {{ ticket.updated_at.strftime('%Y-%m-%d %H:%M') if ticket.updated_at else '' }}</p>
+    </div>
+
+    <h3>Messages</h3>
+    {% if messages %}
+        {% for msg in messages %}
+            <div class="message">
+                <strong>{{ msg.author }}</strong> at {{ msg.created_at.strftime('%Y-%m-%d %H:%M') if msg.created_at else '' }}:
+                <br>{{ msg.message_text }}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No messages yet.</p>
+    {% endif %}
+
+    <h3>Add a Message</h3>
+    <form method="POST" action="{{ url_for('add_message', ticket_id=ticket.ticket_id) }}">
+        <label for="message_text">Message:</label><br>
+        <textarea id="message_text" name="message_text" rows="3" cols="50" required></textarea><br>
+        <label for="author">Your name (optional):</label>
+        <input type="text" id="author" name="author" placeholder="Leave blank to use your email"><br>
+        <button type="submit" class="btn">Add Message</button>
+    </form>
+
+    <h3>Update Status</h3>
+    <form method="POST" action="{{ url_for('update_status', ticket_id=ticket.ticket_id) }}">
+        <label for="status">New status:</label>
+        <select id="status" name="status">
+            <option value="open" {% if ticket.status == 'open' %}selected{% endif %}>Open</option>
+            <option value="in_progress" {% if ticket.status == 'in_progress' %}selected{% endif %}>In Progress</option>
+            <option value="resolved" {% if ticket.status == 'resolved' %}selected{% endif %}>Resolved</option>
+            <option value="closed" {% if ticket.status == 'closed' %}selected{% endif %}>Closed</option>
+        </select>
+        <button type="submit" class="btn">Update Status</button>
+    </form>
+
+    <a class="back" href="{{ url_for('index') }}">← Back to all tickets</a>
+{% endblock %}
